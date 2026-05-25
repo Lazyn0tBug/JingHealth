@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
+import Icon from './Icon.vue';
 
 const isDark = ref(false);
 
@@ -25,21 +26,16 @@ function toggle() {
 // Apply initial state
 applyTheme(isDark.value);
 
-watch(isDark, (val) => applyTheme(val));
+watch(isDark, (val: boolean) => applyTheme(val));
 </script>
 
 <template>
   <button
     @click="toggle"
     :title="isDark ? '切换亮色模式' : '切换暗色模式'"
-    class="p-2 rounded-lg border transition-all duration-200"
-    :class="isDark
-      ? 'border-[--border-primary] bg-[--bg-secondary] text-[--accent-primary] hover:bg-[--bg-tertiary]'
-      : 'border-[--border-primary] bg-[--bg-secondary] text-[--accent-secondary] hover:bg-[--bg-tertiary]'"
+    class="p-2 rounded-lg border transition-all duration-200 border-[--border-primary] bg-[--bg-secondary] hover:bg-[--bg-tertiary]"
+    :class="isDark ? 'text-[--accent-primary]' : 'text-[--accent-secondary]'"
   >
-    <!-- Moon (switch to dark) -->
-    <i v-if="!isDark" class="ri-moon-line text-[--text-secondary] text-lg"></i>
-    <!-- Sun (switch to light) -->
-    <i v-else class="ri-sun-line text-[--accent-primary] text-lg"></i>
+    <Icon :name="isDark ? 'sun-line' : 'moon-line'" size="lg" />
   </button>
 </template>

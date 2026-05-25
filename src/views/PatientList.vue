@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { api, type Patient, type PatientListResponse } from '../services/api';
+import Icon from '../components/Icon.vue';
 
 const router = useRouter();
 const patients = ref<Patient[]>([]);
@@ -187,7 +188,7 @@ onMounted(loadPatients);
                   class="text-text-tertiary hover:text-accent-primary p-1 transition-colors"
                   title="全屏视图"
                 >
-                  <i class="ri-fullscreen-line text-base"></i>
+                  <Icon name="fullscreen-line" size="base" />
                 </button>
               </div>
             </div>
