@@ -13,7 +13,7 @@ if (typeof window !== 'undefined') {
 
 function applyTheme(dark: boolean) {
   if (typeof document !== 'undefined') {
-    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    document.documentElement.classList.toggle('dark', dark);
     localStorage.setItem('theme', dark ? 'dark' : 'light');
   }
 }
