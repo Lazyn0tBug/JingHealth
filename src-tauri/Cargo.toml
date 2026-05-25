@@ -1,0 +1,38 @@
+[package]
+name = "mini-pims"
+version = "0.1.0"
+description = "Mini-PIMS: Lightweight medical information system for primary care clinics"
+authors = ["gpdi"]
+edition = "2021"
+
+[lib]
+name = "mini_pims_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[[bin]]
+name = "mini-pims-server"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# HTTP server
+axum = "0.8"
+tokio = { version = "1", features = ["full"] }
+tower = "0.5"
+tower-http = { version = "0.6", features = ["cors", "fs"] }
+
+# Database
+sea-orm = { version = "1", features = ["runtime-tokio-native-tls", "sqlx-sqlite", "with-chrono", "serde_json"] }
+
+# Utilities
+strsim = "0.11"
+chrono = { version = "0.4", features = ["serde"] }
+unicode-normalization = "0.1"
+thiserror = "2"
