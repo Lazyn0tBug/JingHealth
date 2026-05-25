@@ -33,26 +33,24 @@
     scroll-behavior: smooth;
     scrollbar-color: oklch(var(--color-text-secondary)) oklch(var(--color-background));
     scrollbar-gutter: stable;
+    scrollbar-width: thin;
   }
 
-  ::-webkit-scrollbar {
-    width: 0.5rem;
-    height: 0.5rem;
+  /* ---- CSS Scrollbars Level (standard, all engines) ---- */
+  html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
   }
 
-  ::-webkit-scrollbar-track {
-    background: oklch(var(--color-background));
-    border-radius: 0.25rem;
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(var(--color-text-secondary) / 50%) oklch(var(--color-background));
   }
 
-  ::-webkit-scrollbar-thumb {
-    background: oklch(var(--color-text-secondary));
-    border-radius: 0.25rem;
-    border: 0.125rem solid oklch(var(--color-background));
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: oklch(var(--color-text-tertiary));
+  /* Dark theme scrollbar */
+  [data-theme="dark"],
+  .dark {
+    scrollbar-color: oklch(var(--color-text-secondary) / 40%) oklch(var(--color-background));
   }
 }
 
