@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { api, type Patient, type PatientListResponse } from '../services/api';
 import Icon from '../components/Icon.vue';
+import AppLayout from '../components/AppLayout.vue';
 
 const router = useRouter();
 const patients = ref<Patient[]>([]);
@@ -116,37 +117,36 @@ onMounted(loadPatients);
 </script>
 
 <template>
-  <div class="min-h-screen bg-base p-6">
-    <div class="max-w-6xl mx-auto space-y-4">
-      <!-- Header -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <h1 class="text-2xl font-semibold text-accent-secondary">患者列表</h1>
-        <div class="flex flex-wrap gap-2">
-          <button
-            @click="viewMode = 'cards'"
-            class="tab-btn"
-            :class="{ active: viewMode === 'cards' }"
-          >卡片</button>
-          <button
-            @click="viewMode = 'table'"
-            class="tab-btn"
-            :class="{ active: viewMode === 'table' }"
-          >列表</button>
-          <button
-            @click="createMockPatient"
-            :disabled="mockLoading"
-            class="btn-primary"
-          >
-            {{ mockLoading ? '添加中...' : '+ Mock数据' }}
-          </button>
-          <button
-            @click="router.push('/register')"
-            class="btn-primary"
-          >
-            + 新建患者
-          </button>
-        </div>
+  <AppLayout title="患者列表" padding="p-4 sm:p-6">
+    <template #headerExtra>
+      <div class="flex flex-wrap gap-2">
+        <button
+          @click="viewMode = 'cards'"
+          class="tab-btn"
+          :class="{ active: viewMode === 'cards' }"
+        >卡片</button>
+        <button
+          @click="viewMode = 'table'"
+          class="tab-btn"
+          :class="{ active: viewMode === 'table' }"
+        >列表</button>
+        <button
+          @click="createMockPatient"
+          :disabled="mockLoading"
+          class="btn-primary"
+        >
+          <Icon v-if="mockLoading" name="loader-4-line" size="base" extraClass="animate-spin" />
+          <Icon v-else name="database-2-line" size="base" extraClass="mr-1" />
+          {{ mockLoading ? '添加中...' : '+ Mock数据' }}
+        </button>
+        <button
+          @click="router.push('/register')"
+          class="btn-primary"
+        >
+          <Icon name="user-add-line" size="base" extraClass="mr-1" />新建
+        </button>
       </div>
+    </template>
 
       <!-- Search -->
       <div class="flex flex-col sm:flex-row gap-2">
@@ -300,6 +300,5 @@ onMounted(loadPatients);
           </button>
         </div>
       </div>
-    </div>
-  </div>
+  </AppLayout>
 </template>

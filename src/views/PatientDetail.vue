@@ -36,31 +36,26 @@ onMounted(load);
 </script>
 
 <template>
-  <div class="min-h-screen bg-base p-4 sm:p-6">
-    <div class="max-w-4xl mx-auto space-y-4">
-      <div class="flex items-center gap-4">
-        <button @click="router.push('/')" class="text-text-tertiary hover:text-text-secondary text-sm flex items-center gap-1">
-          <Icon name="arrow-left-line" size="base" />返回
-        </button>
-        <h1 class="text-xl sm:text-2xl font-semibold text-accent-secondary">患者详情</h1>
-      </div>
+  <AppLayout title="患者详情" back-href="/" padding="p-4 sm:p-6">
+    <template #headerExtra>
+      <button
+        @click="router.push(`/records/new?tsid=${tsid}`)"
+        class="btn-primary flex items-center gap-1"
+      >
+        <Icon name="add-circle-line" size="base" />新建就诊
+      </button>
+    </template>
 
       <div v-if="loading" class="text-center py-8 text-text-secondary">加载中...</div>
 
       <template v-else-if="patient">
         <!-- 基本信息卡片 -->
-        <div class="medical-card p-6">
+        <div class="medical-card p-4 sm:p-6">
           <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
             <div>
               <h2 class="text-xl font-semibold text-foreground">{{ patient.name }}</h2>
               <p class="text-sm text-text-tertiary mt-1">TSID: <span class="font-mono">{{ patient.tsid }}</span></p>
             </div>
-            <button
-              @click="router.push(`/records/new?tsid=${tsid}`)"
-              class="btn-primary flex items-center gap-1"
-            >
-              <Icon name="add-circle-line" size="base" />新建就诊
-            </button>
           </div>
 
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
@@ -168,6 +163,5 @@ onMounted(load);
           </div>
         </div>
       </template>
-    </div>
-  </div>
+  </AppLayout>
 </template>

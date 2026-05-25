@@ -78,15 +78,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-base p-4 sm:p-6">
-    <div class="max-w-2xl mx-auto">
-      <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-6">
-        <button @click="router.back()" class="text-text-tertiary hover:text-text-secondary text-sm flex items-center gap-1">
-          <Icon name="arrow-left-line" size="base" />返回
-        </button>
-        <h1 class="text-xl sm:text-2xl font-semibold text-accent-secondary">新建就诊记录</h1>
-        <span v-if="tsid" class="text-sm text-text-tertiary font-mono">患者: {{ tsid }}</span>
-      </div>
+  <AppLayout title="新建就诊记录" :back-href="'/patients/' + tsid" padding="p-4 sm:p-6">
 
       <form @submit.prevent="submit" class="medical-card p-4 sm:p-6 space-y-6">
         <div v-if="error" class="alert-error">
@@ -256,6 +248,5 @@ onMounted(() => {
           </button>
         </div>
       </form>
-    </div>
-  </div>
+  </AppLayout>
 </template>
