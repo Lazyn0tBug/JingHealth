@@ -33,8 +33,8 @@ watch(isDark, (val: boolean) => applyTheme(val));
   <button
     @click="toggle"
     :title="isDark ? '切换亮色模式' : '切换暗色模式'"
-    class="p-2 rounded-lg border transition-all duration-200 border-[--border-primary] bg-[--bg-secondary] hover:bg-[--bg-tertiary]"
-    :class="isDark ? 'text-[--accent-primary]' : 'text-[--accent-secondary]'"
+    class="p-2 rounded-lg border transition-all duration-200 border-subtle bg-surface hover:bg-tertiary"
+    :class="isDark ? 'text-accent-primary' : 'text-accent-secondary'"
   >
     <Icon :name="isDark ? 'sun-line' : 'moon-line'" size="lg" />
   </button>

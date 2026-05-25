@@ -47,7 +47,7 @@ function isActive(href: string) {
 <template>
   <div class="min-h-screen bg-base flex flex-col">
     <!-- 顶层浮动导航栏 -->
-    <nav v-if="showNav !== false" class="fixed top-0 left-0 right-0 z-40 h-12 bg-[--bg-primary] border-b border-[--border-primary] flex items-center px-4 sm:px-6">
+    <nav v-if="showNav !== false" class="fixed top-0 left-0 right-0 z-40 h-12 bg-base border-b border-subtle flex items-center px-4 sm:px-6">
       <div class="mx-auto w-full max-w-6xl flex items-center justify-between gap-4">
         <!-- 左：Logo + 站点名 -->
         <button @click="$router.push('/')" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
@@ -59,14 +59,14 @@ function isActive(href: string) {
         <div class="flex items-center gap-1 sm:gap-2">
           <button
             @click="$router.push('/')"
-            :class="['flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors hover:bg-[--bg-secondary]', isActive('/')]"
+            :class="['flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors hover:bg-surface', isActive('/')]"
           >
             <Icon name="user-line" size="base" />
             <span class="hidden sm:inline">患者列表</span>
           </button>
           <button
             @click="$router.push('/register')"
-            :class="['flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors hover:bg-[--bg-secondary]', isActive('/register')]"
+            :class="['flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors hover:bg-surface', isActive('/register')]"
           >
             <Icon name="user-add-line" size="base" />
             <span class="hidden sm:inline">新建患者</span>

@@ -14,6 +14,14 @@ export default defineConfig(async () => ({
     },
   },
   clearScreen: false,
+  build: {
+    // OXC 工具链：统一 dev 和生产模式的压缩算法
+    minify: "oxc",
+    cssMinify: false,
+    cssCodeSplit: false,
+    // OXC 转换器
+    oxcTransform: {},
+  },
   server: {
     port: 1420,
     strictPort: true,
