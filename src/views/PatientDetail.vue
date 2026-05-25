@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { api, type Patient, type MedicalRecord } from '../services/api';
 import Icon from '../components/Icon.vue';
+import AppLayout from '../components/AppLayout.vue';
 
 const route = useRoute();
 const router = useRouter();
