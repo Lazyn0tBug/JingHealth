@@ -46,27 +46,30 @@ function isActive(href: string) {
 
 <template>
   <div class="min-h-screen bg-base flex flex-col">
-    <!-- 顶层浮动导航栏 -->
-    <nav v-if="showNav !== false" class="fixed top-0 left-0 right-0 z-40 h-12 bg-base border-b border-subtle flex items-center px-4 sm:px-6">
+    <!-- 顶层浮动导航栏 — glassmorphism 效果 -->
+    <nav
+      v-if="showNav !== false"
+      class="fixed top-0 inset-x-0 z-[99999] h-16 bg-background/80 backdrop-blur-md border-b border-border shadow-sm transition-colors duration-300 flex items-center px-4 sm:px-6"
+    >
       <div class="mx-auto w-full max-w-6xl flex items-center justify-between gap-4">
         <!-- 左：Logo + 站点名 -->
         <button @click="$router.push('/')" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <Icon name="heart-pulse-line" size="lg" extraClass="text-accent-primary" />
-          <span class="text-sm font-semibold text-accent-secondary hidden sm:inline">Mini-PIMS</span>
+          <Icon name="heart-pulse-line" size="lg" extraClass="text-primary" />
+          <span class="text-sm font-semibold text-secondary-foreground hidden sm:inline">Mini-PIMS</span>
         </button>
 
         <!-- 中：主导航链接 -->
         <div class="flex items-center gap-1 sm:gap-2">
           <button
             @click="$router.push('/')"
-            :class="['flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors hover:bg-surface', isActive('/')]"
+            :class="['flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors', isActive('/')]"
           >
             <Icon name="user-line" size="base" />
             <span class="hidden sm:inline">患者列表</span>
           </button>
           <button
             @click="$router.push('/register')"
-            :class="['flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors hover:bg-surface', isActive('/register')]"
+            :class="['flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm transition-colors', isActive('/register')]"
           >
             <Icon name="user-add-line" size="base" />
             <span class="hidden sm:inline">新建患者</span>
@@ -79,7 +82,7 @@ function isActive(href: string) {
     </nav>
 
     <!-- 占位：导航栏高度 -->
-    <div v-if="showNav !== false" class="h-12" />
+    <div v-if="showNav !== false" class="h-16" />
 
     <!-- 主内容区 -->
     <main :class="padding ?? 'p-4 sm:p-6'">
