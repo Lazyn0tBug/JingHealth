@@ -2,6 +2,7 @@
 import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { api, type Patient, type MedicalRecord } from '../services/api';
+import Icon from '../components/Icon.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -72,21 +73,23 @@ onMounted(() => {
   <div class="min-h-screen bg-surface flex flex-col items-center justify-center p-4 sm:p-6">
     <!-- Top nav -->
     <div class="w-full max-w-3xl flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-      <button @click="router.push('/')" class="text-text-tertiary hover:text-text-secondary text-sm">← 返回列表</button>
+      <button @click="router.push('/')" class="text-text-tertiary hover:text-text-secondary text-sm flex items-center gap-1">
+        <Icon name="arrow-left-line" size="base" />返回列表
+      </button>
       <div class="flex gap-3">
         <button
           @click="prevPatient"
           :disabled="currentIdx <= 0"
-          class="btn-secondary"
+          class="btn-secondary flex items-center gap-1"
         >
-          ← 上一个
+          <Icon name="arrow-left-s-line" size="base" />上一个
         </button>
         <button
           @click="nextPatient"
           :disabled="currentIdx >= allTsids.length - 1"
-          class="btn-secondary"
+          class="btn-secondary flex items-center gap-1"
         >
-          下一个 →
+          下一个<Icon name="arrow-right-s-line" size="base" />
         </button>
       </div>
     </div>
@@ -285,7 +288,9 @@ onMounted(() => {
             <!-- History records count -->
             <div v-if="records.length > 1" class="pt-4 border-t border-subtle text-sm text-text-tertiary">
               共 {{ records.length }} 条就诊记录 —
-              <button @click="router.push(`/patients/${tsid}`)" class="text-accent-secondary hover:underline">查看全部</button>
+              <button @click="router.push(`/patients/${tsid}`)" class="text-accent-secondary hover:underline flex items-center gap-1 inline-flex">
+                查看全部<Icon name="arrow-right-s-line" size="base" />
+              </button>
             </div>
           </template>
         </div>

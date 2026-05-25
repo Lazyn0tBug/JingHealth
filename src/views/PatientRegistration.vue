@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { api, type PatientCreateRequest } from '../services/api';
+import Icon from '../components/Icon.vue';
 
 const router = useRouter();
 const loading = ref(false);
@@ -65,7 +66,9 @@ async function submit() {
   <div class="min-h-screen bg-base p-4 sm:p-6">
     <div class="max-w-2xl mx-auto">
       <div class="flex items-center gap-4 mb-6">
-        <button @click="router.back()" class="text-text-tertiary hover:text-text-secondary text-sm">← 返回</button>
+        <button @click="router.back()" class="text-text-tertiary hover:text-text-secondary text-sm flex items-center gap-1">
+          <Icon name="arrow-left-line" size="base" />返回
+        </button>
         <h1 class="text-xl sm:text-2xl font-semibold text-accent-secondary">新建患者档案</h1>
       </div>
 
@@ -183,8 +186,10 @@ async function submit() {
           <button
             type="submit"
             :disabled="loading"
-            class="btn-primary flex-1"
+            class="btn-primary flex-1 flex items-center justify-center gap-1"
           >
+            <Icon v-if="loading" name="loader-4-line" size="base" extraClass="animate-spin" />
+            <Icon v-else name="user-add-line" size="base" extraClass="mr-1" />
             {{ loading ? '创建中...' : '创建患者' }}
           </button>
           <button

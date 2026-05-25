@@ -160,7 +160,7 @@ onMounted(loadPatients);
           @click="page = 1; loadPatients()"
           class="btn-secondary"
         >
-          搜索
+          <Icon name="search-line" size="base" extraClass="mr-1" />搜索
         </button>
       </div>
 
@@ -225,9 +225,9 @@ onMounted(loadPatients);
             <div class="mt-3 pt-3 border-t border-subtle flex justify-end">
               <button
                 @click="router.push(`/patients/${p.tsid}`)"
-                class="text-sm text-accent-secondary hover:text-accent-secondary"
+                class="text-sm text-accent-secondary hover:text-accent-primary flex items-center gap-1"
               >
-                查看详情 →
+                查看详情<Icon name="arrow-right-s-line" size="base" />
               </button>
             </div>
           </div>
@@ -288,7 +288,7 @@ onMounted(loadPatients);
             @click="page--; loadPatients()"
             class="btn-secondary"
           >
-            上一页
+            <Icon name="arrow-left-s-line" size="base" extraClass="mr-1" />上一页
           </button>
           <span class="px-3 py-2 text-foreground">{{ page }} / {{ Math.ceil(total / 20) || 1 }}</span>
           <button
@@ -296,7 +296,7 @@ onMounted(loadPatients);
             @click="page++; loadPatients()"
             class="btn-secondary"
           >
-            下一页
+            下一页<Icon name="arrow-right-s-line" size="base" extraClass="ml-1" />
           </button>
         </div>
       </div>
