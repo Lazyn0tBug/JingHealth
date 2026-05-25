@@ -18,7 +18,7 @@ onMounted(() => {
 <template>
   <div class="min-h-screen bg-base text-foreground">
     <!-- Fixed theme toggle — top right -->
-    <div class="fixed top-4 right-4 z-50">
+    <div class="fixed top-3 right-3 sm:top-4 sm:right-4 z-50">
       <ThemeToggle />
     </div>
     <RouterView />

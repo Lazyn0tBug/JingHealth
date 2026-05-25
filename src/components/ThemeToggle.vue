@@ -34,7 +34,7 @@ watch(isDark, (val) => applyTheme(val));
     :title="isDark ? '切换亮色模式' : '切换暗色模式'"
     class="p-2 rounded-lg border transition-all duration-200"
     :class="isDark
-      ? 'bg-gray-800 text-yellow-400 border-gray-600 hover:bg-gray-700'
+      ? 'bg-gray-800 text-yellow-400 border-gray-600 hover:bg-gray-700 dark:bg-[--bg-secondary] dark:text-[--accent-primary] dark:border-[--border-primary] dark:hover:bg-[--bg-tertiary]'
       : 'bg-gray-100 text-gray-600 border-gray-200 hover:bg-gray-200'"
   >
     <!-- Moon (switch to dark) -->

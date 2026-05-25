@@ -118,9 +118,9 @@ onMounted(loadPatients);
   <div class="min-h-screen bg-base p-6">
     <div class="max-w-6xl mx-auto space-y-4">
       <!-- Header -->
-      <div class="flex items-center justify-between">
-        <h1 class="text-2xl font-semibold text-foreground-600">患者列表</h1>
-        <div class="flex gap-2">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <h1 class="text-2xl font-semibold text-accent-secondary">患者列表</h1>
+        <div class="flex flex-wrap gap-2">
           <button
             @click="viewMode = 'cards'"
             class="tab-btn"
@@ -148,12 +148,12 @@ onMounted(loadPatients);
       </div>
 
       <!-- Search -->
-      <div class="flex gap-2">
+      <div class="flex flex-col sm:flex-row gap-2">
         <input
           v-model="search"
           @keyup.enter="page = 1; loadPatients()"
           placeholder="搜索姓名、TSID 或案例编号..."
-          class="medical-input"
+          class="medical-input flex-1"
         />
         <button
           @click="page = 1; loadPatients()"
@@ -226,7 +226,7 @@ onMounted(loadPatients);
             <div class="mt-3 pt-3 border-t border-subtle flex justify-end">
               <button
                 @click="router.push(`/patients/${p.tsid}`)"
-                class="text-sm text-foreground-600 hover:text-foreground-700"
+                class="text-sm text-accent-secondary hover:text-accent-secondary"
               >
                 查看详情 →
               </button>
@@ -236,8 +236,8 @@ onMounted(loadPatients);
       </template>
 
       <!-- Table view -->
-      <div v-else class="medical-card overflow-hidden">
-        <table class="w-full text-sm">
+      <div v-else class="medical-card overflow-x-auto">
+        <table class="w-full text-sm min-w-[640px]">
           <thead class="bg-surface border-b border-subtle">
             <tr>
               <th class="px-4 py-3 text-left text-text-secondary font-medium">案例编号</th>
@@ -267,7 +267,7 @@ onMounted(loadPatients);
               <td class="px-4 py-3">
                 <button
                   @click.stop="router.push(`/patients/${p.tsid}`)"
-                  class="text-foreground-600 hover:text-foreground-700 text-sm"
+                  class="text-accent-secondary hover:text-accent-secondary text-sm"
                 >
                   查看
                 </button>

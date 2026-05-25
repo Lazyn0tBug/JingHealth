@@ -69,9 +69,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-surface flex flex-col items-center justify-center p-6">
+  <div class="min-h-screen bg-surface flex flex-col items-center justify-center p-4 sm:p-6">
     <!-- Top nav -->
-    <div class="w-full max-w-3xl flex items-center justify-between mb-4">
+    <div class="w-full max-w-3xl flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
       <button @click="router.push('/')" class="text-text-tertiary hover:text-text-secondary text-sm">← 返回列表</button>
       <div class="flex gap-3">
         <button
@@ -96,28 +96,28 @@ onMounted(() => {
 
     <template v-else-if="patient">
       <!-- Tab buttons -->
-      <div class="w-full max-w-3xl flex gap-2 mb-4">
+      <div class="w-full max-w-3xl flex gap-2 mb-4 flex-wrap">
         <button
           @click="activeTab = 'basic'"
-          :class="['px-6 py-2.5 rounded-lg text-sm font-medium transition-colors', activeTab === 'basic' ? 'bg-accent-primary text-inverse' : 'medical-card text-text-secondary hover:bg-surface']"
+          :class="['px-4 sm:px-6 py-2.5 rounded-lg text-sm font-medium transition-colors', activeTab === 'basic' ? 'bg-accent-primary text-inverse' : 'medical-card text-text-secondary hover:bg-surface']"
         >
           基本信息
         </button>
         <button
           @click="activeTab = 'medical'"
-          :class="['px-6 py-2.5 rounded-lg text-sm font-medium transition-colors', activeTab === 'medical' ? 'bg-accent-primary text-inverse' : 'medical-card text-text-secondary hover:bg-surface']"
+          :class="['px-4 sm:px-6 py-2.5 rounded-lg text-sm font-medium transition-colors', activeTab === 'medical' ? 'bg-accent-primary text-inverse' : 'medical-card text-text-secondary hover:bg-surface']"
         >
           医疗核心信息
         </button>
       </div>
 
       <!-- Card -->
-      <div class="w-full max-w-3xl medical-card rounded-2xl p-8">
+      <div class="w-full max-w-3xl medical-card rounded-2xl p-4 sm:p-8">
 
         <!-- Header -->
-        <div class="flex items-start justify-between mb-6 pb-6 border-b border-subtle">
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-6 pb-6 border-b border-subtle">
           <div>
-            <h1 class="text-3xl font-bold text-foreground">{{ patient.name }}</h1>
+            <h1 class="text-2xl sm:text-3xl font-bold text-foreground">{{ patient.name }}</h1>
             <p class="text-sm text-text-tertiary mt-1 font-mono">TSID: {{ patient.tsid }}</p>
           </div>
           <span :class="['px-3 py-1 text-sm rounded-full font-medium', patient.gender === '男' ? 'gender-pill gender-pill--male' : 'gender-pill gender-pill--female']">
@@ -127,7 +127,7 @@ onMounted(() => {
 
         <!-- Basic info tab -->
         <div v-if="activeTab === 'basic'" class="space-y-6">
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-sm">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 text-sm">
             <div>
               <p class="text-text-tertiary text-xs mb-1">案例编号</p>
               <p class="font-semibold text-foreground font-mono">{{ patient.case_no ?? '—' }}</p>

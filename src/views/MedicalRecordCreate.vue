@@ -77,15 +77,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-base p-6">
+  <div class="min-h-screen bg-base p-4 sm:p-6">
     <div class="max-w-2xl mx-auto">
-      <div class="flex items-center gap-4 mb-6">
-        <button @click="router.back()" class="text-text-tertiary hover:text-text-secondary">← 返回</button>
-        <h1 class="text-2xl font-semibold text-accent-secondary">新建就诊记录</h1>
+      <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-6">
+        <button @click="router.back()" class="text-text-tertiary hover:text-text-secondary text-sm">← 返回</button>
+        <h1 class="text-xl sm:text-2xl font-semibold text-accent-secondary">新建就诊记录</h1>
         <span v-if="tsid" class="text-sm text-text-tertiary font-mono">患者: {{ tsid }}</span>
       </div>
 
-      <form @submit.prevent="submit" class="medical-card p-6 space-y-6">
+      <form @submit.prevent="submit" class="medical-card p-4 sm:p-6 space-y-6">
         <div v-if="error" class="alert-error">
           {{ error }}
         </div>
@@ -104,7 +104,7 @@ onMounted(() => {
             ></textarea>
           </div>
 
-          <div class="grid grid-cols-2 gap-4 mt-4">
+          <div class="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
             <div>
               <label class="block text-sm font-medium text-text-secondary mb-1">收缩压 (mmHg)</label>
               <input v-model.number="form.systolic_bp" type="number" class="medical-input" />
@@ -115,7 +115,7 @@ onMounted(() => {
             </div>
           </div>
 
-          <div class="grid grid-cols-3 gap-4 mt-4">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
             <div>
               <label class="block text-sm font-medium text-text-secondary mb-1">体温 (°C)</label>
               <input v-model.number="form.temperature" type="number" step="0.1" class="medical-input" />
@@ -136,7 +136,7 @@ onMounted(() => {
         <!-- 诊断 -->
         <div>
           <h3 class="text-sm font-semibold text-text-secondary mb-3 border-b border-subtle pb-2">诊断信息</h3>
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-medium text-text-secondary mb-1">ICD-10 编码</label>
               <input v-model="form.icd10_code" class="medical-input" placeholder="如: J06.9" />
@@ -155,7 +155,7 @@ onMounted(() => {
         <!-- PMS 医疗核心信息 -->
         <div>
           <h3 class="text-sm font-semibold text-text-secondary mb-3 border-b border-subtle pb-2">医疗核心信息</h3>
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-medium text-text-secondary mb-1">归类</label>
               <select v-model="form.case_type" class="medical-input">
@@ -199,7 +199,7 @@ onMounted(() => {
             <input v-model="form.treatment_cycle" class="medical-input" />
           </div>
 
-          <div class="grid grid-cols-2 gap-4 mt-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
             <div>
               <label class="block text-sm font-medium text-text-secondary mb-1">是否住院</label>
               <select v-model="form.hospitalization" class="medical-input">
@@ -214,7 +214,7 @@ onMounted(() => {
             </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-4 mt-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
             <div>
               <label class="block text-sm font-medium text-text-secondary mb-1">复诊情况</label>
               <select v-model="form.followup_status" class="medical-input">

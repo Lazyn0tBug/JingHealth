@@ -62,14 +62,14 @@ async function submit() {
 </script>
 
 <template>
-  <div class="min-h-screen bg-base p-6">
+  <div class="min-h-screen bg-base p-4 sm:p-6">
     <div class="max-w-2xl mx-auto">
       <div class="flex items-center gap-4 mb-6">
-        <button @click="router.back()" class="text-text-tertiary hover:text-text-secondary">← 返回</button>
-        <h1 class="text-2xl font-semibold text-accent-secondary">新建患者档案</h1>
+        <button @click="router.back()" class="text-text-tertiary hover:text-text-secondary text-sm">← 返回</button>
+        <h1 class="text-xl sm:text-2xl font-semibold text-accent-secondary">新建患者档案</h1>
       </div>
 
-      <form @submit.prevent="submit" class="medical-card p-6 space-y-6">
+      <form @submit.prevent="submit" class="medical-card p-4 sm:p-6 space-y-6">
         <div v-if="error" class="alert-error">
           {{ error }}
         </div>
@@ -77,7 +77,7 @@ async function submit() {
         <!-- 基本信息 -->
         <div>
           <h3 class="text-sm font-semibold text-text-secondary mb-3 border-b border-subtle pb-2">基本信息</h3>
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-medium text-text-secondary mb-1">姓名 <span class="text-red-500">*</span></label>
               <input v-model="form.name" required class="medical-input" />
@@ -108,7 +108,7 @@ async function submit() {
         <!-- 联系信息 -->
         <div>
           <h3 class="text-sm font-semibold text-text-secondary mb-3 border-b border-subtle pb-2">联系信息</h3>
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-medium text-text-secondary mb-1">联系电话</label>
               <input v-model="form.phone" class="medical-input" />
@@ -123,7 +123,7 @@ async function submit() {
         <!-- PMS 扩展信息 -->
         <div>
           <h3 class="text-sm font-semibold text-text-secondary mb-3 border-b border-subtle pb-2">赴日医疗信息</h3>
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-medium text-text-secondary mb-1">国籍</label>
               <input v-model="form.nationality" class="medical-input" placeholder="如：中国" />
